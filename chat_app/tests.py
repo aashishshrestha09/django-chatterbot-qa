@@ -12,14 +12,14 @@ class ChatBotTests(TestCase):
     """
     Test cases for the ChatterBot functionality.
     """
-    
+
     def test_chatbot_instance_creation(self):
         """
         Test that the chatbot instance is created successfully.
         """
         bot = get_chatbot()
         self.assertIsNotNone(bot)
-    
+
     def test_chatbot_response(self):
         """
         Test that the chatbot returns a response to user input.

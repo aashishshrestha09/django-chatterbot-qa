@@ -12,12 +12,12 @@ import sys
 def main():
     """
     Main function to execute Django administrative tasks.
-    
+
     Sets up the Django environment and runs management commands.
     """
     # Set the default Django settings module for this project
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chatbot_project.settings')
-    
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chatbot_project.settings")
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -26,10 +26,10 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    
+
     # Execute the command line arguments
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

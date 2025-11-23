@@ -1,11 +1,13 @@
 # Makefile for Django ChatterBot Terminal Client
 
-.PHONY: help venv install migrate run test clean
+.PHONY: help venv install migrate run test clean lint format check
 
 # Python and virtual environment settings
 VENV := venv
 PYTHON := $(VENV)/bin/python
 PIP := $(VENV)/bin/pip
+BLACK := $(VENV)/bin/black
+PYFLAKES := $(VENV)/bin/pyflakes
 
 help:
 	@echo "Django ChatterBot Terminal Client - Available Commands:"
@@ -15,6 +17,9 @@ help:
 	@echo "  make migrate    - Run database migrations"
 	@echo "  make run        - Start the chat client"
 	@echo "  make test       - Run test cases"
+	@echo "  make lint       - Check code with pyflakes"
+	@echo "  make format     - Format code with black"
+	@echo "  make check      - Run lint and format checks"
 	@echo "  make clean      - Remove cache files and database"
 	@echo "  make cleanall   - Remove everything including venv"
 	@echo "  make setup      - Complete setup (venv + install + migrate)"
@@ -42,6 +47,18 @@ run:
 test:
 	@echo "Running test cases..."
 	$(PYTHON) manage.py test chat_app
+
+lint:
+	@echo "Checking code with pyflakes..."
+	$(PYFLAKES) chat_app/ chatbot_project/ manage.py || true
+
+format:
+	@echo "Formatting code with black..."
+	$(BLACK) --line-length 88 chat_app/ chatbot_project/ manage.py
+
+check: lint
+	@echo "Running format check (dry-run)..."
+	$(BLACK) --check --line-length 88 chat_app/ chatbot_project/ manage.py || true
 
 clean:
 	@echo "Cleaning up cache files and database..."
