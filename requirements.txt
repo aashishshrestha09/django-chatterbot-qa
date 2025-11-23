@@ -1,0 +1,15 @@
+# Django Framework
+Django==5.2.8
+
+# ChatterBot - Conversational AI
+chatterbot==1.2.8
+chatterbot-corpus==1.2.2
+
+# Spacy English language model (installed via direct URL)
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
+
+# Required dependencies
+pytz==2025.2
+python-dateutil==2.9.0
+pyyaml==6.0.3
+sqlalchemy==2.0.44
